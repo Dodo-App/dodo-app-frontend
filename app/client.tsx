@@ -1,8 +1,14 @@
 /// <reference types="vinxi/types/client" />
-import { hydrateRoot } from 'react-dom/client';
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
 import { StartClient } from '@tanstack/start';
 import { createRouter } from './router';
 
 const router = createRouter();
 
-hydrateRoot(document.getElementById('root')!, <StartClient router={router} />);
+const root = createRoot(document.getElementById('root')!);
+root.render(
+  <StrictMode>
+    <StartClient router={router} />
+  </StrictMode>
+);

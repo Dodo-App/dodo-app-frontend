@@ -184,6 +184,9 @@ node_modules
 # vercel
 .vercel
 
+# vinxi
+.vinxi
+
 # local env files
 .env*.local
 
