@@ -28,7 +28,7 @@ You should see the app running at http://localhost:3000.
 pnpm run build
 ```
 
-# Tack Stack
+# Tech Stack
 
 - [Tanstack Start](https://start.tanstack.com/)
 - [Tanstack Router](https://tanstack.com/router)
