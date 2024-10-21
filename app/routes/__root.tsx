@@ -3,6 +3,8 @@ import { createRootRoute } from '@tanstack/react-router';
 import { Outlet, ScrollRestoration } from '@tanstack/react-router';
 import { Body, Head, Html, Meta, Scripts } from '@tanstack/start';
 import { FooterNav } from '@/components/FooterNav/FooterNav';
+import '@/styles/globals.css';
+
 export const Route = createRootRoute({
   meta: () => [
     {

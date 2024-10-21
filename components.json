@@ -15,6 +15,3 @@
     "utils": "@/lib/utils"
   }
 }
-
-// Organize the Schadcn components and my other components in the same folder
-// https://ui.shadcn.com/docs/installation/manual#organizing-components
