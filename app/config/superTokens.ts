@@ -3,7 +3,7 @@ import ThirdParty from 'supertokens-auth-react/recipe/thirdparty';
 import Session from 'supertokens-auth-react/recipe/session';
 
 // TODO: Config for SuperTokens should be defined as environment variables
-export const superTokenConfig = {
+export const superTokensConfig = {
   appInfo: {
     appName: 'Dodo',
     apiDomain: 'http://localhost:8080',
