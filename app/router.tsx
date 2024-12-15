@@ -1,9 +1,10 @@
 import { createRouter as createTanStackRouter } from '@tanstack/react-router';
 import { routeTree } from './routeTree.gen';
-
+import { NotFound } from './pages';
 export function createRouter() {
   const router = createTanStackRouter({
     routeTree,
+    defaultNotFoundComponent: NotFound,
   });
 
   return router;

@@ -1,23 +1,28 @@
-import * as React from 'react';
-import { createRootRoute } from '@tanstack/react-router';
-import { Outlet, ScrollRestoration } from '@tanstack/react-router';
-import { Body, Head, Html, Meta, Scripts } from '@tanstack/start';
+import {
+  Outlet,
+  ScrollRestoration,
+  createRootRoute,
+} from '@tanstack/react-router';
+import { Meta, Scripts } from '@tanstack/start';
+import type { ReactNode } from 'react';
 import { FooterNav } from '@/components/FooterNav/FooterNav';
 import '@/styles/globals.css';
 
 export const Route = createRootRoute({
-  meta: () => [
-    {
-      charSet: 'utf-8',
-    },
-    {
-      name: 'viewport',
-      content: 'width=device-width, initial-scale=1',
-    },
-    {
-      title: 'TanStack Start Starter',
-    },
-  ],
+  head: () => ({
+    meta: [
+      {
+        charSet: 'utf-8',
+      },
+      {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1',
+      },
+      {
+        title: 'TanStack Start Starter',
+      },
+    ],
+  }),
   component: RootComponent,
 });
 
@@ -30,17 +35,17 @@ function RootComponent() {
   );
 }
 
-function RootDocument({ children }: { children: React.ReactNode }) {
+function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <Html>
-      <Head>
+    <html>
+      <head>
         <Meta />
-      </Head>
-      <Body>
+      </head>
+      <body>
         {children}
         <ScrollRestoration />
         <Scripts />
-      </Body>
-    </Html>
+      </body>
+    </html>
   );
 }

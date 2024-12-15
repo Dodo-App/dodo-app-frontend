@@ -8,9 +8,6 @@ export default {
     container: {
       center: true,
       padding: '2rem',
-      screens: {
-        '2xl': '1400px',
-      },
     },
     extend: {
       colors: {
@@ -54,7 +51,7 @@ export default {
         sm: 'calc(var(--radius) - 4px)',
       },
       fontFamily: {
-        sans: ['var(--font-sans)', ...fontFamily.sans],
+        dmSans: ['DM Sans', ...fontFamily.sans],
       },
       keyframes: {
         'accordion-down': {
