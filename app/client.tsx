@@ -15,7 +15,7 @@ SuperTokens.init(superTokensConfig);
 
 const router = createRouter();
 
-const RootComponent = () => {
+const App = () => {
   return (
     <StrictMode>
       {canHandleRoute([ThirdPartyPreBuiltUI, PasswordlessPreBuiltUI]) ? (
@@ -30,4 +30,4 @@ const RootComponent = () => {
   );
 };
 
-hydrateRoot(document, <RootComponent />);
+hydrateRoot(document, <App />);

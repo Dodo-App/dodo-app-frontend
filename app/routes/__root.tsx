@@ -5,7 +5,7 @@ import {
 } from '@tanstack/react-router';
 import { Meta, Scripts } from '@tanstack/start';
 import type { ReactNode } from 'react';
-import { FooterNav } from '@/components/FooterNav/FooterNav';
+import { Layout } from '@/components/Layout';
 import '@/styles/globals.css';
 
 export const Route = createRootRoute({
@@ -16,10 +16,10 @@ export const Route = createRootRoute({
       },
       {
         name: 'viewport',
-        content: 'width=device-width, initial-scale=1',
+        content: 'width=device-width, initial-scale=1, viewport-fit=cover',
       },
       {
-        title: 'TanStack Start Starter',
+        title: 'Dodo App',
       },
     ],
   }),
@@ -30,7 +30,6 @@ function RootComponent() {
   return (
     <RootDocument>
       <Outlet />
-      <FooterNav />
     </RootDocument>
   );
 }
@@ -42,7 +41,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
         <Meta />
       </head>
       <body>
-        {children}
+        <Layout>{children}</Layout>
         <ScrollRestoration />
         <Scripts />
       </body>
