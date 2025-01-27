@@ -16,9 +16,16 @@ import { Route as rootRoute } from './routes/__root';
 
 // Create Virtual Routes
 
+const UserLazyImport = createFileRoute('/user')();
 const IndexLazyImport = createFileRoute('/')();
 
 // Create/Update Routes
+
+const UserLazyRoute = UserLazyImport.update({
+  id: '/user',
+  path: '/user',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/user.lazy').then((d) => d.Route));
 
 const IndexLazyRoute = IndexLazyImport.update({
   id: '/',
@@ -37,6 +44,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexLazyImport;
       parentRoute: typeof rootRoute;
     };
+    '/user': {
+      id: '/user';
+      path: '/user';
+      fullPath: '/user';
+      preLoaderRoute: typeof UserLazyImport;
+      parentRoute: typeof rootRoute;
+    };
   }
 }
 
@@ -44,32 +58,37 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute;
+  '/user': typeof UserLazyRoute;
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute;
+  '/user': typeof UserLazyRoute;
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute;
   '/': typeof IndexLazyRoute;
+  '/user': typeof UserLazyRoute;
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath;
-  fullPaths: '/';
+  fullPaths: '/' | '/user';
   fileRoutesByTo: FileRoutesByTo;
-  to: '/';
-  id: '__root__' | '/';
+  to: '/' | '/user';
+  id: '__root__' | '/' | '/user';
   fileRoutesById: FileRoutesById;
 }
 
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute;
+  UserLazyRoute: typeof UserLazyRoute;
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
+  UserLazyRoute: UserLazyRoute,
 };
 
 export const routeTree = rootRoute
@@ -82,11 +101,15 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/"
+        "/",
+        "/user"
       ]
     },
     "/": {
       "filePath": "index.lazy.tsx"
+    },
+    "/user": {
+      "filePath": "user.lazy.tsx"
     }
   }
 }

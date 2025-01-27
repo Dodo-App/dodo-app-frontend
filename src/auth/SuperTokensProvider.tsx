@@ -3,7 +3,7 @@ import SuperTokens, { SuperTokensWrapper } from 'supertokens-auth-react';
 import { canHandleRoute, getRoutingComponent } from 'supertokens-auth-react/ui';
 import { ThirdPartyPreBuiltUI } from 'supertokens-auth-react/recipe/thirdparty/prebuiltui';
 import { PasswordlessPreBuiltUI } from 'supertokens-auth-react/recipe/passwordless/prebuiltui';
-import { superTokensConfig } from '@/config/superTokens';
+import { superTokensConfig } from '@/auth/superTokensConfig';
 
 // Initialize SuperTokens
 SuperTokens.init(superTokensConfig);
