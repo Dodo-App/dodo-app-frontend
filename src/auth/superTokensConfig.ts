@@ -23,7 +23,7 @@ export const superTokensConfig: SuperTokensConfig = {
     }),
     ThirdParty.init({
       signInAndUpFeature: {
-        providers: [ThirdParty.Google.init()],
+        providers: [ThirdParty.Google.init(), ThirdParty.Facebook.init()],
       },
     }),
     Session.init(),
