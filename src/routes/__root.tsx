@@ -5,6 +5,7 @@ import {
   Outlet,
   ScrollRestoration,
 } from '@tanstack/react-router';
+import { SessionAuth } from 'supertokens-auth-react/recipe/session';
 
 const TanStackRouterDevtools =
   process.env.NODE_ENV === 'production'
@@ -20,7 +21,11 @@ export const Route = createRootRoute({
   component: () => (
     <>
       <Layout>
-        <Outlet />
+        <SessionAuth
+          requireAuth={process.env.NODE_ENV === 'development' ? false : true}
+        >
+          <Outlet />
+        </SessionAuth>
       </Layout>
       <ScrollRestoration />
       <Suspense>

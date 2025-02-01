@@ -8,11 +8,11 @@ import path from 'path';
 export default defineConfig({
   base: './',
   plugins: [
-    TanStackRouterVite(),
+    TanStackRouterVite({ autoCodeSplitting: true }),
+    viteReact(),
     svgr({
       exportAsDefault: true,
     }),
-    viteReact(),
   ],
   resolve: {
     alias: {
