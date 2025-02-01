@@ -20,13 +20,13 @@ const TanStackRouterDevtools =
 export const Route = createRootRoute({
   component: () => (
     <>
-      <Layout>
-        <SessionAuth
-          requireAuth={process.env.NODE_ENV === 'development' ? false : true}
-        >
+      <SessionAuth
+        requireAuth={process.env.NODE_ENV === 'development' ? false : true}
+      >
+        <Layout>
           <Outlet />
-        </SessionAuth>
-      </Layout>
+        </Layout>
+      </SessionAuth>
       <ScrollRestoration />
       <Suspense>
         <TanStackRouterDevtools position="bottom-right" />
