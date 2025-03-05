@@ -1,5 +1,5 @@
 import { StrictMode, useMemo } from 'react';
-
+import { SuperTokensProvider } from '@/auth/SuperTokensProvider';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
@@ -8,14 +8,7 @@ import {
   RouterProvider,
   createRouter as createTanStackRouter,
 } from '@tanstack/react-router';
-import { routeTree } from './routes/routeTree.gen';
-
-// SuperTokens
-import { superTokensConfig } from '@/config/superTokens';
-import SuperTokens, { SuperTokensWrapper } from 'supertokens-auth-react';
-import { canHandleRoute, getRoutingComponent } from 'supertokens-auth-react/ui';
-import { ThirdPartyPreBuiltUI } from 'supertokens-auth-react/recipe/thirdparty/prebuiltui';
-import { PasswordlessPreBuiltUI } from 'supertokens-auth-react/recipe/passwordless/prebuiltui';
+import { routeTree } from './routeTree.gen';
 
 export function createRouter() {
   const router = createTanStackRouter({
@@ -31,23 +24,16 @@ declare module '@tanstack/react-router' {
   }
 }
 
-SuperTokens.init(superTokensConfig);
-
 export default function App() {
   const queryClient = useMemo(() => new QueryClient({}), []);
   return (
     <StrictMode>
-      {canHandleRoute([ThirdPartyPreBuiltUI, PasswordlessPreBuiltUI]) ? (
-        // This renders the login UI on the /auth route
-        getRoutingComponent([ThirdPartyPreBuiltUI, PasswordlessPreBuiltUI])
-      ) : (
-        <SuperTokensWrapper>
-          <QueryClientProvider client={queryClient}>
-            <RouterProvider router={createRouter()} />
-            <ReactQueryDevtools />
-          </QueryClientProvider>
-        </SuperTokensWrapper>
-      )}
+      <SuperTokensProvider>
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={createRouter()} />
+          <ReactQueryDevtools />
+        </QueryClientProvider>
+      </SuperTokensProvider>
     </StrictMode>
   );
 }

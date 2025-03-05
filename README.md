@@ -30,7 +30,6 @@ pnpm run build
 
 # Tech Stack
 
-- [Tanstack Start](https://start.tanstack.com/)
 - [Tanstack Router](https://tanstack.com/router)
 - [Tanstack Query](https://tanstack.com/query)
 - [Shadcn UI](https://ui.shadcn.com/)

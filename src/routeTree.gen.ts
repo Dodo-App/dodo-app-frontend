@@ -12,26 +12,26 @@ import { createFileRoute } from '@tanstack/react-router';
 
 // Import Routes
 
-import { Route as rootRoute } from './__root';
-import { Route as RouteTreeGenImport } from './routeTree.gen';
+import { Route as rootRoute } from './routes/__root';
 
 // Create Virtual Routes
 
+const UserLazyImport = createFileRoute('/user')();
 const IndexLazyImport = createFileRoute('/')();
 
 // Create/Update Routes
+
+const UserLazyRoute = UserLazyImport.update({
+  id: '/user',
+  path: '/user',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/user.lazy').then((d) => d.Route));
 
 const IndexLazyRoute = IndexLazyImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./index.lazy').then((d) => d.Route));
-
-const RouteTreeGenRoute = RouteTreeGenImport.update({
-  id: '/routeTree/gen',
-  path: '/routeTree/gen',
-  getParentRoute: () => rootRoute,
-} as any);
+} as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route));
 
 // Populate the FileRoutesByPath interface
 
@@ -44,11 +44,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexLazyImport;
       parentRoute: typeof rootRoute;
     };
-    '/routeTree/gen': {
-      id: '/routeTree/gen';
-      path: '/routeTree/gen';
-      fullPath: '/routeTree/gen';
-      preLoaderRoute: typeof RouteTreeGenImport;
+    '/user': {
+      id: '/user';
+      path: '/user';
+      fullPath: '/user';
+      preLoaderRoute: typeof UserLazyImport;
       parentRoute: typeof rootRoute;
     };
   }
@@ -58,37 +58,37 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute;
-  '/routeTree/gen': typeof RouteTreeGenRoute;
+  '/user': typeof UserLazyRoute;
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute;
-  '/routeTree/gen': typeof RouteTreeGenRoute;
+  '/user': typeof UserLazyRoute;
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute;
   '/': typeof IndexLazyRoute;
-  '/routeTree/gen': typeof RouteTreeGenRoute;
+  '/user': typeof UserLazyRoute;
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath;
-  fullPaths: '/' | '/routeTree/gen';
+  fullPaths: '/' | '/user';
   fileRoutesByTo: FileRoutesByTo;
-  to: '/' | '/routeTree/gen';
-  id: '__root__' | '/' | '/routeTree/gen';
+  to: '/' | '/user';
+  id: '__root__' | '/' | '/user';
   fileRoutesById: FileRoutesById;
 }
 
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute;
-  RouteTreeGenRoute: typeof RouteTreeGenRoute;
+  UserLazyRoute: typeof UserLazyRoute;
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
-  RouteTreeGenRoute: RouteTreeGenRoute,
+  UserLazyRoute: UserLazyRoute,
 };
 
 export const routeTree = rootRoute
@@ -102,14 +102,14 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/routeTree/gen"
+        "/user"
       ]
     },
     "/": {
       "filePath": "index.lazy.tsx"
     },
-    "/routeTree/gen": {
-      "filePath": "routeTree.gen.ts"
+    "/user": {
+      "filePath": "user.lazy.tsx"
     }
   }
 }

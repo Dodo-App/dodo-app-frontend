@@ -8,13 +8,11 @@ import path from 'path';
 export default defineConfig({
   base: './',
   plugins: [
-    TanStackRouterVite({
-      generatedRouteTree: './src/routes/routeTree.gen.ts',
-    }),
+    TanStackRouterVite({ autoCodeSplitting: true }),
+    viteReact(),
     svgr({
       exportAsDefault: true,
     }),
-    viteReact(),
   ],
   resolve: {
     alias: {

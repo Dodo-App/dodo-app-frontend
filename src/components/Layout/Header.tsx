@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
 import { useEffect, useState } from 'react';
-
+import { Link } from '@tanstack/react-router';
 import { Avatar, AvatarImage } from '@/components/ShadcnUI/avatar';
 
 interface HeaderProps {
@@ -35,9 +35,11 @@ export const Header = ({ title, controlComponents }: Readonly<HeaderProps>) => {
     >
       {/* TODO: Add/Mock user avatar and link the component to the profile page, and add mock server for user data as well as the React Query for user api */}
       <div className="flex items-center gap-2">
-        <Avatar>
-          <AvatarImage src={faker.image.avatar()} />
-        </Avatar>
+        <Link to="/user">
+          <Avatar>
+            <AvatarImage src={faker.image.avatar()} />
+          </Avatar>
+        </Link>
         <h1>{title}</h1>
       </div>
       <div className="flex items-center gap-2">
