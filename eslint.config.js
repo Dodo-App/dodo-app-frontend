@@ -5,6 +5,7 @@ import pluginReact from 'eslint-plugin-react';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import tailwind from 'eslint-plugin-tailwindcss';
 import pluginRouter from '@tanstack/eslint-plugin-router';
+import pluginQuery from '@tanstack/eslint-plugin-query';
 
 export default [
   pluginJs.configs.recommended,
@@ -12,6 +13,7 @@ export default [
   pluginReact.configs.flat.recommended,
   ...tailwind.configs['flat/recommended'],
   ...pluginRouter.configs['flat/recommended'],
+  ...pluginQuery.configs['flat/recommended'],
   eslintConfigPrettier,
   {
     files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],

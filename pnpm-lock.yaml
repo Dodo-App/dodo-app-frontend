@@ -24,7 +24,7 @@ importers:
         specifier: ^1.1.1
         version: 1.1.1(@types/react@19.0.8)(react@19.0.0)
       '@tanstack/react-query':
-        specifier: ^4.29.3
+        specifier: ^4.36.1
         version: 4.36.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@tanstack/react-router':
         specifier: ^1.97.23
@@ -81,11 +81,14 @@ importers:
       '@rollup/rollup-darwin-x64':
         specifier: 4.28.0
         version: 4.28.0
+      '@tanstack/eslint-plugin-query':
+        specifier: ^5.66.0
+        version: 5.66.0(eslint@9.19.0(jiti@1.21.7))(typescript@5.7.3)
       '@tanstack/eslint-plugin-router':
         specifier: ^1.97.19
         version: 1.97.19(eslint@9.19.0(jiti@1.21.7))(typescript@5.7.3)
       '@tanstack/react-query-devtools':
-        specifier: ^4.29.1
+        specifier: ^4.36.1
         version: 4.36.1(@tanstack/react-query@4.36.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@tanstack/router-devtools':
         specifier: ^1.97.23
@@ -1401,6 +1404,11 @@ packages:
     engines: {node: '>=10'}
     peerDependencies:
       '@svgr/core': ^6.0.0
+
+  '@tanstack/eslint-plugin-query@5.66.0':
+    resolution: {integrity: sha512-CzZhBxicLDuuSJbkZ4nPcuBqWnhLu72Zt9p/7qLQ93BepVnZJV6ZDlBLBuN5eg7YRACwECPLsntnwo1zuhgseQ==}
+    peerDependencies:
+      eslint: ^8.57.0 || ^9.0.0
 
   '@tanstack/eslint-plugin-router@1.97.19':
     resolution: {integrity: sha512-ovNy7OHUVGwidxSf2ypemYX4AqIpzWOnJqb1ZuTwZUTHTqQK1h2Nc6ndek0Y54bdOasSTCzBjrvu+VYv516QmQ==}
@@ -5416,6 +5424,14 @@ snapshots:
       svg-parser: 2.0.4
     transitivePeerDependencies:
       - supports-color
+
+  '@tanstack/eslint-plugin-query@5.66.0(eslint@9.19.0(jiti@1.21.7))(typescript@5.7.3)':
+    dependencies:
+      '@typescript-eslint/utils': 8.21.0(eslint@9.19.0(jiti@1.21.7))(typescript@5.7.3)
+      eslint: 9.19.0(jiti@1.21.7)
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
 
   '@tanstack/eslint-plugin-router@1.97.19(eslint@9.19.0(jiti@1.21.7))(typescript@5.7.3)':
     dependencies:

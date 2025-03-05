@@ -14,6 +14,8 @@ export const User = () => {
     await signOut();
     redirectToAuth();
   };
+
+  //TODO: Mimic the react query from Coati, including query key, and hook structures, authentication (?), etc. And we're gonna use fetch or axios?
   return (
     <div>
       <Accordion type="single" collapsible>
